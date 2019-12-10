@@ -5,17 +5,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace GildedRose.Tests
 {
     [TestClass]
-    public class UpdateQualityWithStandardItemOutOfDateShould
+    public class UpdateQualityWithStandardItemInDateShould
     {
         private readonly Program target = new Program();
         private readonly Item testItem;
 
-        public UpdateQualityWithStandardItemOutOfDateShould()
+        public UpdateQualityWithStandardItemInDateShould()
         {
             testItem = new Item
             {
                 Name = "+5 Dexterity Vest",
-                SellIn = 0,
+                SellIn = 10,
                 Quality = 20
             };
 
@@ -27,17 +27,16 @@ namespace GildedRose.Tests
         {
             target.UpdateQuality();
 
-            Assert.AreEqual(testItem.SellIn, -1);
+            Assert.AreEqual(testItem.SellIn, 9);
         }
 
         [TestMethod]
-        public void DecreaseQualityTwiceAsFast()
+        public void DecreaseQuality()
         {
             target.UpdateQuality();
 
-            Assert.AreEqual(testItem.Quality, 18);
-            Assert.AreEqual(testItem.Price, 34.2M);
-
+            Assert.AreEqual(testItem.Quality, 19);
+            Assert.AreEqual(testItem.Price, 36.1M);
         }
     }
 }
