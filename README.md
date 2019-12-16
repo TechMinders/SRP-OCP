@@ -1,53 +1,28 @@
-# TarnishedRose
+Esta es una adaptación del ejercicio original: https://github.com/Steve-Fenton/TarnishedRose
 
-Gilded rose exercise based on a scenario defined by @NotMyself.
+Ejercicio
+Partimos de un "Legacy Code" que sabemos que funciona gracias a una bateria de pruebas y que debemos refactorizar.
 
-There are branches for different starting points, each one provides a different area of practise.
+Los pasos a seguir son los siguientes:
 
-1. master - this is the version with no tests. In the words of Allister, we _start from scratch_.
-2. characterised - there are characterising tests, but no other improvements.
+Pasar los test en verde.
+Refactorizar aplicando SOLID.
+Volver a pasar los test en verde.
+Requerimientos
+Hola y bienvenidos al equipo de Gilded Rose. Como saben, somos una pequeña posada con una ubicación privilegiada en una ciudad prominente dirigida por una amigable posadera llamada Allison. También compramos y vendemos los mejores productos. Desafortunadamente, nuestros productos están degradando constantemente su calidad a medida que se acercan a su fecha de venta. Tenemos un sistema que actualiza nuestro inventario. Fue desarrollado por un tipo sin sentido llamado César, que se ha ido a dar la vuelta al mundo. Vuestra tarea es refactorizar nuestro sistema para allanar el camino para la introducción de próximos artículos. Primero una introducción a nuestro sistema:
 
-## Exercises
+Todos los artículos tienen un valor "SellIn" que indica la cantidad de días que tenemos para vender el artículo.
+Todos los artículos tienen un valor "Quality" que indica lo valioso que es el artículo.
+Al final de cada día, nuestro sistema reduce ambos valores para cada artículo.
+El precio de los artículos se actualiza en base a su calidad multiplicado por un valor constante.
+Bastante simple, ¿No? Bueno, aquí es donde se pone interesante:
 
-Using the master branch, treat the whole application as a legacy code base that needs a new feature added.
+Una vez que la fecha de caducidad ha pasado, la calidad se degrada el doble de rápido.
+La calidad de un artículo nunca es negativa.
+"Aged Brie" en realidad aumenta en calidad cuanto más viejo se hace.
+La calidad de un artículo nunca supera los 50.
+El artículo "Aged Brie", aumenta la calidad a medida que se acerca el valor de "SellIn";
+Solo para aclarar, un artículo nunca puede aumentar su calidad por encima de 50.
 
-You can follow this process if you like:
-
-1. Add characterising tests
-2. Refactor the legacy code
-3. Add the new feature using test-first development
-
-You can use BDD, TDD, or whatever other flavour of testing you like. You can even try it without tests (once you think you're done, head to the characterised branch and grab the tests to see if your code passes!)
-
-### The Short Version
-
-Start with the characterised branch to get straight into the refactoring part of the exercise. Maybe try out some of the ideas from 99 Bottles of OOP!
-
-https://www.sandimetz.com/99bottles/
-
-## Requirements
-
-Written by @TerryHughes and @NotMyself
-
-Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime location in a prominent city ran by a friendly innkeeper named Allison. We also buy and sell only the finest goods. Unfortunately, our goods are constantly degrading in quality as they approach their sell by date. We have a system in place that updates our inventory for us. It was developed by a no-nonsense type named Leeroy, who has moved on to new adventures. Your task is to add the new feature to our system so that we can begin selling a new category of items. First an introduction to our system:
-
- - All items have a SellIn value which denotes the number of days we have to sell the item
- - All items have a Quality value which denotes how valuable the item is
- - At the end of each day our system lowers both values for every item
-
-Pretty simple, right? Well this is where it gets interesting:
-
- - Once the sell by date has passed, Quality degrades twice as fast
- - The Quality of an item is never negative
- - "Aged Brie" actually increases in Quality the older it gets
- - The Quality of an item is never more than 50
- - "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
- - "Backstage passes", like aged brie, increases in Quality as it's SellIn value approaches; Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but Quality drops to 0 after the concert
-
-We have recently signed a supplier of conjured items. This requires an update to our system:
-
- - "Conjured" items degrade in Quality twice as fast as normal items
-
-Feel free to make any changes to the UpdateQuality method and add any new code as long as everything still works correctly. However, do not alter the Item class or Items property as those belong to the goblin in the corner who will insta-rage and one-shot you as he doesn't believe in shared code ownership (you can make the UpdateQuality method and Items property static if you like, we'll cover for you).
-
-Just for clarification, an item can never have its Quality increase above 50, however "Sulfuras" is a legendary item and as such its Quality is 80 and it never alters.
+#Solución:
+En esta solución he implementado el patrón Factory Method
