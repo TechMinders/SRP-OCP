@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using GildedRose.Console.Interfaces;
+using GildedRose.Console.UpdaterFactory;
 
 namespace GildedRose.Console
 {
     public class Program
     {
         public IList<Item> Items;
+
         static void Main(string[] args)
         {
+
             System.Console.WriteLine("OMGHAI!");
 
             var app = new Program()
@@ -23,58 +27,17 @@ namespace GildedRose.Console
             app.UpdateQuality();
 
             System.Console.ReadKey();
-
         }
 
         public void UpdateQuality()
         {
-            for (var i = 0; i < Items.Count; i++)
+            IFactory factory = new Factory();
+
+            foreach (var item in Items)
             {
-                if (Items[i].Name != "Aged Brie")
-                {
-                    if (Items[i].Quality > 0)
-                    {
-                        Items[i].Quality = Items[i].Quality - 1;
-                    }
-                }
-                else
-                {
-                    if (Items[i].Quality < 50)
-                    {
-                        Items[i].Quality = Items[i].Quality + 1;
-                    }
-                }
-
-                Items[i].SellIn = Items[i].SellIn - 1;
-
-                if (Items[i].SellIn < 0)
-                {
-                    if (Items[i].Name != "Aged Brie")
-                    {
-
-                        if (Items[i].Quality > 0)
-                        {
-                            Items[i].Quality = Items[i].Quality - 1;
-                        }
-                    }
-                    else
-                    {
-                        if (Items[i].Quality < 50)
-                        {
-                            Items[i].Quality = Items[i].Quality + 1;
-                        }
-                    }
-                }
-                Items[i].Price = Math.Round(Items[i].Quality * 1.9M, 2);
+                var creatorBase = factory.Build(item.Name);
+                creatorBase.UpdateQuality(item);
             }
         }
-    }
-
-    public class Item
-    {
-        public string Name { get; set; }
-        public int SellIn { get; set; }
-        public int Quality { get; set; }
-        public decimal Price { get; set; }
     }
 }

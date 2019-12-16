@@ -1,17 +1,17 @@
 ﻿using GildedRose.Console;
+using Shouldly;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace GildedRose.Tests
 {
-    [TestClass]
     public class UpdateQualityWithAgedBrieShould
     {
         const string AGED_BRIE = "Aged Brie";
         private readonly Program target = new Program();
         private Item testItem;
 
-        [TestMethod]
+        [Fact]
         public void DecreaseRemainingDays()
         {
             testItem = new Item
@@ -25,11 +25,11 @@ namespace GildedRose.Tests
 
             target.UpdateQuality();
 
-            Assert.AreEqual(testItem.SellIn, 9);
-            Assert.AreEqual(testItem.Price, 39.9M);
+            testItem.SellIn.ShouldBe(9);
+            testItem.Price.ShouldBe(39.9M);
         }
 
-        [TestMethod]
+        [Fact]
         public void IncreaseQualityWhenBelowFifty()
         {
             testItem = new Item
@@ -42,10 +42,11 @@ namespace GildedRose.Tests
             target.Items = new List<Item> { testItem };
 
             target.UpdateQuality();
-            Assert.AreEqual(testItem.Quality, 50);
+
+            testItem.Quality.ShouldBe(50);
         }
 
-        [TestMethod]
+        [Fact]
         public void LimitQualityToFifty()
         {
             testItem = new Item
@@ -58,10 +59,11 @@ namespace GildedRose.Tests
             target.Items = new List<Item> { testItem };
 
             target.UpdateQuality();
-            Assert.AreEqual(testItem.Quality, 50);
+
+            testItem.Quality.ShouldBe(50);
         }
 
-        [TestMethod]
+        [Fact]
         public void IncreaseQualityTwiceAsFastAfterSaleDeadline()
         {
             // Note: Case discovered during characterisation
@@ -76,10 +78,10 @@ namespace GildedRose.Tests
 
             target.UpdateQuality();
 
-            Assert.AreEqual(testItem.Quality, 50);
+            testItem.Quality.ShouldBe(50);
         }
 
-        [TestMethod]
+        [Fact]
         public void LimitQualityToFiftyWhenRateHasDoubled()
         {
             // Note: Case discovered during characterisation
@@ -94,7 +96,7 @@ namespace GildedRose.Tests
 
             target.UpdateQuality();
 
-            Assert.AreEqual(testItem.Quality, 50);
+            testItem.Quality.ShouldBe(50);
         }
     }
 }
