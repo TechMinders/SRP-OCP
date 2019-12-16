@@ -24,5 +24,5 @@ La calidad de un artículo nunca supera los 50.
 El artículo "Aged Brie", aumenta la calidad a medida que se acerca el valor de "SellIn";
 Solo para aclarar, un artículo nunca puede aumentar su calidad por encima de 50.
 
-#Solución:
+Solución:
 En esta solución he implementado el patrón Factory Method
