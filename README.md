@@ -29,6 +29,6 @@ Solo para aclarar, un artículo nunca puede aumentar su calidad por encima de 50
 
 ## Solución:
 En esta solución he implementado el patrón Factory Method.
-En el metodo "UpdateQuality" para cada item obtenemos una clase abstracta(Creator), que es la que se encarga de aplicar los cambios correspondientes al Item a través de una clase "Updater" que es la que implementa los criterios de negocio. Con esta implementación a la hora de añadir un nuevo Item sólo tendremos que añadir una clase "Updater" con los criterios de negocio especificos y un "Creator" que herede de nuestra clase abstracta.
+En el método "UpdateQuality" para cada item obtenemos una clase abstracta(Creator), que es la que se encarga de aplicar los cambios correspondientes al Item a través de una clase "Updater" que es la que implementa los criterios de negocio. Con esta implementación a la hora de añadir un nuevo Item sólo tendremos que añadir una clase "Updater" con los criterios de negocio especificos y un "Creator" que herede de nuestra clase abstracta.
 
 En el siguiente enlace tenéis más información sobre este patron de diseño: https://refactoring.guru/design-patterns/factory-method
