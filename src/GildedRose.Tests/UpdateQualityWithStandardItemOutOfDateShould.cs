@@ -1,10 +1,10 @@
 ﻿using GildedRose.Console;
+using Shouldly;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace GildedRose.Tests
 {
-    [TestClass]
     public class UpdateQualityWithStandardItemOutOfDateShould
     {
         private readonly Program target = new Program();
@@ -22,22 +22,21 @@ namespace GildedRose.Tests
             target.Items = new List<Item> { testItem };
         }
 
-        [TestMethod]
+        [Fact]
         public void DecreaseRemainingDays()
         {
             target.UpdateQuality();
 
-            Assert.AreEqual(testItem.SellIn, -1);
+            testItem.SellIn.ShouldBe(-1);
         }
 
-        [TestMethod]
+        [Fact]
         public void DecreaseQualityTwiceAsFast()
         {
             target.UpdateQuality();
 
-            Assert.AreEqual(testItem.Quality, 18);
-            Assert.AreEqual(testItem.Price, 34.2M);
-
+            testItem.Quality.ShouldBe(18);
+            testItem.Price.ShouldBe(34.2M);
         }
     }
 }

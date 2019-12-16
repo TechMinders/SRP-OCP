@@ -43,6 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstractions\IUpdate.cs" />
+    <Compile Include="Abstractions\IUpdateprice.cs" />
+    <Compile Include="Abstractions\IUpdateQuality.cs" />
+    <Compile Include="Abstractions\IUpdateSellIn.cs" />
+    <Compile Include="Implementations\AgedBrieQuality.cs" />
+    <Compile Include="Implementations\BasePrice.cs" />
+    <Compile Include="Implementations\BaseQuality.cs" />
+    <Compile Include="Implementations\BaseSellIn.cs" />
+    <Compile Include="Implementations\ReverseQuality.cs" />
+    <Compile Include="Implementations\Updater.cs" />
+    <Compile Include="Implementations\UpdaterFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

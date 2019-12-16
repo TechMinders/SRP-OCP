@@ -23,6 +23,6 @@ Bastante simple, ¿No? Bueno, aquí es donde se pone interesante:
  - La calidad de un artículo nunca es negativa.
  - "Aged Brie" en realidad aumenta en calidad cuanto más viejo se hace.
  - La calidad de un artículo nunca supera los 50.
- - El artículo "Aged Brie", aumenta la calidad a medida que se acerca el valor de "SellIn";
+ - El artículo "Aged Brie", aumenta la calidad a medida que se acerca el valor de "SellIn"; La calidad aumenta en 2 cuando hay 10 días o menos y en 3 cuando hay 5 días o menos, pero la calidad cae a 0 después del dia de venta ("SellIn")
 
 Solo para aclarar, un artículo nunca puede aumentar su calidad por encima de 50.

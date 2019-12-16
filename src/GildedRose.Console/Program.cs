@@ -30,42 +30,43 @@ namespace GildedRose.Console
         {
             for (var i = 0; i < Items.Count; i++)
             {
-                if (Items[i].Name != "Aged Brie")
-                {
-                    if (Items[i].Quality > 0)
-                    {
-                        Items[i].Quality = Items[i].Quality - 1;
-                    }
-                }
-                else
-                {
-                    if (Items[i].Quality < 50)
-                    {
-                        Items[i].Quality = Items[i].Quality + 1;
-                    }
-                }
+                UpdaterFactory.GetUpdater(Items[i]).Update(Items[i]);
+                //if (Items[i].Name != "Aged Brie")
+                //{
+                //    if (Items[i].Quality > 0)
+                //    {
+                //        Items[i].Quality = Items[i].Quality - 1;
+                //    }
+                //}
+                //else
+                //{
+                //    if (Items[i].Quality < 50)
+                //    {
+                //        Items[i].Quality = Items[i].Quality + 1;
+                //    }
+                //}
 
-                Items[i].SellIn = Items[i].SellIn - 1;
+                //Items[i].SellIn = Items[i].SellIn - 1;
 
-                if (Items[i].SellIn < 0)
-                {
-                    if (Items[i].Name != "Aged Brie")
-                    {
+                //if (Items[i].SellIn < 0)
+                //{
+                //    if (Items[i].Name != "Aged Brie")
+                //    {
 
-                        if (Items[i].Quality > 0)
-                        {
-                            Items[i].Quality = Items[i].Quality - 1;
-                        }
-                    }
-                    else
-                    {
-                        if (Items[i].Quality < 50)
-                        {
-                            Items[i].Quality = Items[i].Quality + 1;
-                        }
-                    }
-                }
-                Items[i].Price = Math.Round(Items[i].Quality * 1.9M, 2);
+                //        if (Items[i].Quality > 0)
+                //        {
+                //            Items[i].Quality = Items[i].Quality - 1;
+                //        }
+                //    }
+                //    else
+                //    {
+                //        if (Items[i].Quality < 50)
+                //        {
+                //            Items[i].Quality = Items[i].Quality + 1;
+                //        }
+                //    }
+                //}
+                //Items[i].Price = Math.Round(Items[i].Quality * 1.9M, 2);
             }
         }
     }
